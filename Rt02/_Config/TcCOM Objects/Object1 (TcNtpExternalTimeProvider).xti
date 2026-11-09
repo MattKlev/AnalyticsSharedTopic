@@ -1,0 +1,751 @@
+<?xml version="1.0"?>
+<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4026.28" ClassName="CTComObjDef">
+	<DataTypes>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-00000000003E}" TcBaseType="true" HideSubItems="true">IPADDR</Name>
+			<BitSize>32</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>4</Elements>
+			</ArrayInfo>
+			<Format>
+				<Printf>%d.%d.%d.%d</Printf>
+				<Parameter>[3]</Parameter>
+				<Parameter>[2]</Parameter>
+				<Parameter>[1]</Parameter>
+				<Parameter>[0]</Parameter>
+			</Format>
+		</DataType>
+	</DataTypes>
+	<ImageDatas>
+		<ImageData Id="1000">424de6000000000000007600000028000000100000000e00000001000400000000000000000000000000000000000000000000000000ff00ff0088ee8a0021df25000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001222222222210001222222222222101222222222222221222222222222222222222222222222221222222222222221012222222222221000222222222222000012220222222100000110001222100000000000011100000000000000000000</ImageData>
+	</ImageDatas>
+	<Module Id="#x01010010" KeepUnrestoredLinks="2">
+		<Name>__FILENAME__</Name>
+		<ImageId>1000</ImageId>
+		<TmcDesc GUID="{7E6D2FDA-2D37-4998-A31F-36958D3A2C8A}">
+			<Name>TcNtpExternalTimeProvider</Name>
+			<CLSID ClassFactory="TcIotDrivers">{7E6D2FDA-2D37-4998-A31F-36958D3A2C8A}</CLSID>
+			<Info>
+				<ImageData>424de6000000000000007600000028000000100000000e00000001000400000000000000000000000000000000000000000000000000ff00ff0088ee8a0021df25000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001222222222210001222222222222101222222222222221222222222222222222222222222222221222222222222221012222222222221000222222222222000012220222222100000110001222100000000000011100000000000000000000</ImageData>
+			</Info>
+			<InitSequence>SO</InitSequence>
+			<Contexts>
+				<Context>
+					<Id>1</Id>
+					<ManualConfig>
+						<OTCID>#x02010030</OTCID>
+					</ManualConfig>
+					<Priority>20</Priority>
+					<CycleTime>10000000</CycleTime>
+				</Context>
+			</Contexts>
+			<Interfaces>
+				<Interface DisableCodeGeneration="true">
+					<Type GUID="{00000012-0000-0000-E000-000000000064}">ITComObject</Type>
+				</Interface>
+				<Interface DisableCodeGeneration="true">
+					<Type GUID="{03000010-0000-0000-E000-000000000064}">ITcCyclic</Type>
+				</Interface>
+				<Interface DisableCodeGeneration="true">
+					<Type GUID="{03000012-0000-0000-E000-000000000064}">ITcADI</Type>
+				</Interface>
+				<Interface DisableCodeGeneration="true">
+					<Type GUID="{03000018-0000-0000-E000-000000000064}">ITcWatchSource</Type>
+				</Interface>
+			</Interfaces>
+			<Parameters>
+				<Group><![CDATA[Client]]></Group>
+				<Group><![CDATA[Server]]></Group>
+				<Group><![CDATA[Filter]]></Group>
+				<Parameter HideParameter="true">
+					<Name>TraceLevelMax</Name>
+					<Comment><![CDATA[Controls the amount of log messages.]]></Comment>
+					<BitSize>32</BitSize>
+					<BaseType GUID="{8007AE3B-86BB-40F2-B385-EF87FCC239A4}">TcTraceLevel</BaseType>
+					<Default>
+						<EnumText>tlWarning</EnumText>
+					</Default>
+					<PTCID>#x03002103</PTCID>
+					<ContextId>1</ContextId>
+				</Parameter>
+				<Parameter Group="Client">
+					<Name>TimeType</Name>
+					<Comment TxtId=""><![CDATA[Type of External Time Provider;]]></Comment>
+					<BitSize>32</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000009}">DINT</BaseType>
+					<EnumInfo>
+						<Text><![CDATA[None]]></Text>
+						<Enum>0</Enum>
+					</EnumInfo>
+					<EnumInfo>
+						<Text><![CDATA[Hard]]></Text>
+						<Enum>1</Enum>
+					</EnumInfo>
+					<EnumInfo>
+						<Text><![CDATA[Medium]]></Text>
+						<Enum>2</Enum>
+					</EnumInfo>
+					<EnumInfo>
+						<Text><![CDATA[Soft]]></Text>
+						<Enum>3</Enum>
+					</EnumInfo>
+					<Default>
+						<EnumText>Soft</EnumText>
+					</Default>
+					<PTCID>#x03150001</PTCID>
+					<ContextId>1</ContextId>
+				</Parameter>
+				<Parameter Group="Client">
+					<Name>ClientEnable</Name>
+					<BitSize>8</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+					<Default>
+						<EnumText>TRUE</EnumText>
+					</Default>
+					<PTCID>#x03150101</PTCID>
+					<ContextId>1</ContextId>
+				</Parameter>
+				<Parameter Group="Client">
+					<Name>ServerName</Name>
+					<Comment><![CDATA[Hostname of NTP Server (set to empty to use nServerAddress);]]></Comment>
+					<BitSize>2048</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-0001000000FF}">STRING(255)</BaseType>
+					<Default>
+						<String><![CDATA[ntp.beckhoff-cloud.com]]></String>
+					</Default>
+					<PTCID>#x03150102</PTCID>
+					<ContextId>1</ContextId>
+				</Parameter>
+				<Parameter Group="Client">
+					<Name>ServerAddress</Name>
+					<Comment TxtId=""><![CDATA[IP Address (v4) of NTP Server (alternative if sServerName is empty);]]></Comment>
+					<BitSize>32</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-00000000003E}">IPADDR</BaseType>
+					<PTCID>#x03150103</PTCID>
+					<ContextId>1</ContextId>
+				</Parameter>
+				<Parameter Group="Client">
+					<Name>ServerPort</Name>
+					<Comment TxtId=""><![CDATA[UDP Port (v4) of NTP Server (in case a port other than default port 123 should be used);]]></Comment>
+					<BitSize>16</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000005}">UINT</BaseType>
+					<Default>
+						<Value>123</Value>
+					</Default>
+					<PTCID>#x03150104</PTCID>
+					<ContextId>1</ContextId>
+				</Parameter>
+				<Parameter Group="Client">
+					<Name>PollInterval</Name>
+					<Comment TxtId=""><![CDATA[Poll Interval: Minimum interval between messages;]]></Comment>
+					<BitSize>32</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000048}">TIME</BaseType>
+					<Unit><![CDATA[[ms]]]></Unit>
+					<Default>
+						<Value>1000</Value>
+					</Default>
+					<PTCID>#x03150105</PTCID>
+					<ContextId>1</ContextId>
+				</Parameter>
+				<Parameter HideParameter="true" Group="Server">
+					<Name>ServerPara</Name>
+					<BitSize>128</BitSize>
+					<SubItem>
+						<Name>bEnable</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+						<BitSize>8</BitSize>
+						<BitOffs>0</BitOffs>
+						<Default>
+							<EnumText>FALSE</EnumText>
+						</Default>
+					</SubItem>
+					<SubItem>
+						<Name>nPort</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+						<Comment TxtId=""><![CDATA[UDP Port (v4) of NTP Server (in case a port other than default port 123 should be used);]]></Comment>
+						<BitSize>16</BitSize>
+						<BitOffs>16</BitOffs>
+					</SubItem>
+					<SubItem>
+						<Name>nLeap</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+						<Comment TxtId=""><![CDATA[Leap Indicator as fallback (no superior server):
+0 = none;
+1 = 61 seconds;
+2 = 59 seconds;
+3 = unknown (unsyncronized);]]></Comment>
+						<BitSize>8</BitSize>
+						<BitOffs>32</BitOffs>
+						<Default>
+							<Value>0</Value>
+						</Default>
+					</SubItem>
+					<SubItem>
+						<Name>nStratum</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+						<Comment TxtId=""><![CDATA[Stratum as fallback (no superior server):
+0 = unspecified or invalid;
+1 = primary server (e.g. GPS);
+2-15 = secondary server (via NTP);
+16 = unsynchronized;
+17-255 = reserved;]]></Comment>
+						<BitSize>8</BitSize>
+						<BitOffs>40</BitOffs>
+						<Default>
+							<Value>1</Value>
+						</Default>
+					</SubItem>
+					<SubItem>
+						<Name>nRoot</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+						<Comment TxtId=""><![CDATA[Root identity as fallback (no superior server);]]></Comment>
+						<BitSize>32</BitSize>
+						<BitOffs>64</BitOffs>
+					</SubItem>
+					<PTCID>#x03150012</PTCID>
+					<ContextId>1</ContextId>
+				</Parameter>
+				<Parameter HideParameter="true" Group="Filter">
+					<Name>FilterPara</Name>
+					<BitSize>128</BitSize>
+					<SubItem>
+						<Name>eMode</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
+						<EnumInfo>
+							<Text><![CDATA[None]]></Text>
+							<Enum>0</Enum>
+						</EnumInfo>
+						<EnumInfo>
+							<Text><![CDATA[Linear]]></Text>
+							<Enum>1</Enum>
+						</EnumInfo>
+						<BitSize>32</BitSize>
+						<BitOffs>0</BitOffs>
+						<Default>
+							<EnumText>Linear</EnumText>
+						</Default>
+					</SubItem>
+					<SubItem>
+						<Name>nFilter</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
+						<Comment TxtId=""><![CDATA[Number of values to filter. Default = 60;]]></Comment>
+						<BitSize>32</BitSize>
+						<BitOffs>32</BitOffs>
+						<Default>
+							<Value>60</Value>
+						</Default>
+					</SubItem>
+					<SubItem>
+						<Name>nLimiter</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
+						<Comment TxtId=""><![CDATA[Maximum change of offset within a single cycle. Default = 1us;]]></Comment>
+						<BitSize>32</BitSize>
+						<BitOffs>64</BitOffs>
+						<Unit><![CDATA[[100ns]]]></Unit>
+						<Default>
+							<Value>10</Value>
+						</Default>
+					</SubItem>
+					<SubItem>
+						<Name>nModulo</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
+						<Comment TxtId=""><![CDATA[Rounding the offset for adaptation to the cycle time. Default = 0.1ms;]]></Comment>
+						<BitSize>32</BitSize>
+						<BitOffs>96</BitOffs>
+						<Unit><![CDATA[[100ns]]]></Unit>
+						<Default>
+							<Value>1000</Value>
+						</Default>
+					</SubItem>
+					<PTCID>#x03150021</PTCID>
+					<ContextId>1</ContextId>
+				</Parameter>
+				<Parameter OnlineParameter="true" ReadOnly="true">
+					<Name>ServerInfo</Name>
+					<BitSize>704</BitSize>
+					<SubItem>
+						<Name>nLeap</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+						<Comment TxtId=""><![CDATA[Leap Indicator:
+0 = none;
+1 = 61 seconds;
+2 = 59 seconds;
+3 = unknown (unsyncronized);]]></Comment>
+						<BitSize>8</BitSize>
+						<BitOffs>0</BitOffs>
+					</SubItem>
+					<SubItem>
+						<Name>nVersion</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+						<Comment TxtId=""><![CDATA[Version Number;]]></Comment>
+						<BitSize>8</BitSize>
+						<BitOffs>8</BitOffs>
+					</SubItem>
+					<SubItem>
+						<Name>nMode</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+						<Comment TxtId=""><![CDATA[Mode Indicator:
+0 = reserved;
+1 = symmetric active;
+2 = symmetric passive;
+3 = client;
+4 = server;
+5 = broadcast;
+6 = control message;
+7 = reserved;]]></Comment>
+						<BitSize>8</BitSize>
+						<BitOffs>16</BitOffs>
+					</SubItem>
+					<SubItem>
+						<Name>nStratum</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+						<Comment TxtId=""><![CDATA[Stratum:
+0 = unspecified or invalid;
+1 = primary server (e.g. GPS);
+2-15 = secondary server (via NTP);
+16 = unsynchronized;
+17-255 = reserved;]]></Comment>
+						<BitSize>8</BitSize>
+						<BitOffs>24</BitOffs>
+					</SubItem>
+					<SubItem>
+						<Name>tPollIntv</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000048}">TIME</Type>
+						<Comment TxtId=""><![CDATA[Poll Interval:
+Maximum interval between messages;]]></Comment>
+						<BitSize>32</BitSize>
+						<BitOffs>32</BitOffs>
+						<Unit><![CDATA[[ms]]]></Unit>
+					</SubItem>
+					<SubItem>
+						<Name>fPollPrec</Name>
+						<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+						<Comment TxtId=""><![CDATA[Poll Precision:
+Precision of the clock;]]></Comment>
+						<BitSize>32</BitSize>
+						<BitOffs>64</BitOffs>
+						<Unit><![CDATA[[s]]]></Unit>
+					</SubItem>
+					<SubItem>
+						<Name>fRootDelay</Name>
+						<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+						<Comment TxtId=""><![CDATA[Root Delay:
+Total round-trip delay to the reference clock;]]></Comment>
+						<BitSize>32</BitSize>
+						<BitOffs>96</BitOffs>
+						<Unit><![CDATA[[s]]]></Unit>
+					</SubItem>
+					<SubItem>
+						<Name>fRootDisp</Name>
+						<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
+						<Comment TxtId=""><![CDATA[Root Dispersion:
+Total dispersion to the reference clock;]]></Comment>
+						<BitSize>32</BitSize>
+						<BitOffs>128</BitOffs>
+						<Unit><![CDATA[[s]]]></Unit>
+					</SubItem>
+					<SubItem>
+						<Name>sRefId</Name>
+						<Type GUID="{18071995-0000-0000-0000-000100000017}">STRING(23)</Type>
+						<Comment TxtId=""><![CDATA[ReferenceID:
+Identifying the particular server or reference clock;]]></Comment>
+						<BitSize>192</BitSize>
+						<BitOffs>160</BitOffs>
+					</SubItem>
+					<SubItem>
+						<Name>nRefTime</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000046}">FILETIME</Type>
+						<Comment TxtId=""><![CDATA[Reference Timestamp:
+Time when the clock was last set or corrected;]]></Comment>
+						<BitSize>64</BitSize>
+						<BitOffs>384</BitOffs>
+					</SubItem>
+					<SubItem>
+						<Name>nOrgTime</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000046}">FILETIME</Type>
+						<Comment TxtId=""><![CDATA[Origin Timestamp:
+Time at the client when the request departed for the server;]]></Comment>
+						<BitSize>64</BitSize>
+						<BitOffs>448</BitOffs>
+					</SubItem>
+					<SubItem>
+						<Name>nRecTime</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000046}">FILETIME</Type>
+						<Comment TxtId=""><![CDATA[Receive Timestamp:
+Time at the server when the request departed for the server;]]></Comment>
+						<BitSize>64</BitSize>
+						<BitOffs>512</BitOffs>
+					</SubItem>
+					<SubItem>
+						<Name>nTmtTime</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000046}">FILETIME</Type>
+						<Comment TxtId=""><![CDATA[Transmit Timestamp:
+Time at the server when the response left for the client;]]></Comment>
+						<BitSize>64</BitSize>
+						<BitOffs>576</BitOffs>
+					</SubItem>
+					<SubItem>
+						<Name>nDstTime</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000046}">FILETIME</Type>
+						<Comment TxtId=""><![CDATA[Destination Timestamp:
+Time at the client when the reply arrived from the server;]]></Comment>
+						<BitSize>64</BitSize>
+						<BitOffs>640</BitOffs>
+					</SubItem>
+					<PTCID>#x03150a01</PTCID>
+					<ContextId>1</ContextId>
+				</Parameter>
+				<Parameter OnlineParameter="true" HideParameter="true" ReadOnly="true">
+					<Name>SocketDiag</Name>
+					<BitSize>288</BitSize>
+					<SubItem>
+						<Name>nSendCnt</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+						<Comment TxtId=""><![CDATA[Total amount of sent datagramms;]]></Comment>
+						<BitSize>32</BitSize>
+						<BitOffs>0</BitOffs>
+					</SubItem>
+					<SubItem>
+						<Name>nSendFailCnt</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+						<Comment TxtId=""><![CDATA[Total amount of failed send attempts;]]></Comment>
+						<BitSize>32</BitSize>
+						<BitOffs>32</BitOffs>
+					</SubItem>
+					<SubItem>
+						<Name>nSendReqCnt</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+						<Comment TxtId=""><![CDATA[Total amount of sent requests as client;]]></Comment>
+						<BitSize>32</BitSize>
+						<BitOffs>64</BitOffs>
+					</SubItem>
+					<SubItem>
+						<Name>nSendResCnt</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+						<Comment TxtId=""><![CDATA[Total amount of sent responses as server;]]></Comment>
+						<BitSize>32</BitSize>
+						<BitOffs>96</BitOffs>
+					</SubItem>
+					<SubItem>
+						<Name>nRecvCnt</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+						<Comment TxtId=""><![CDATA[Total amount of received datagramms;]]></Comment>
+						<BitSize>32</BitSize>
+						<BitOffs>128</BitOffs>
+					</SubItem>
+					<SubItem>
+						<Name>nRecvFailCnt</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+						<Comment TxtId=""><![CDATA[Total amount of failed receive attempts;]]></Comment>
+						<BitSize>32</BitSize>
+						<BitOffs>160</BitOffs>
+					</SubItem>
+					<SubItem>
+						<Name>nRecvResCnt</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+						<Comment TxtId=""><![CDATA[Total amount of received responses as client;]]></Comment>
+						<BitSize>32</BitSize>
+						<BitOffs>192</BitOffs>
+					</SubItem>
+					<SubItem>
+						<Name>nRecvReqCnt</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+						<Comment TxtId=""><![CDATA[Total amount of received requests as server;]]></Comment>
+						<BitSize>32</BitSize>
+						<BitOffs>224</BitOffs>
+					</SubItem>
+					<SubItem>
+						<Name>nTimeoutCnt</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+						<Comment TxtId=""><![CDATA[Total amount of timeouts from requests as client;]]></Comment>
+						<BitSize>32</BitSize>
+						<BitOffs>256</BitOffs>
+					</SubItem>
+					<PTCID>#x03150a10</PTCID>
+					<ContextId>1</ContextId>
+				</Parameter>
+				<Parameter OnlineParameter="true" HideParameter="true" ReadOnly="true">
+					<Name>ClientDiag</Name>
+					<BitSize>640</BitSize>
+					<SubItem>
+						<Name>nOrgTime</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000046}">FILETIME</Type>
+						<Comment TxtId=""><![CDATA[Origin Timestamp:
+Time at the client when the request departed for the server;]]></Comment>
+						<BitSize>64</BitSize>
+						<BitOffs>0</BitOffs>
+						<Unit><![CDATA[[100ns]]]></Unit>
+					</SubItem>
+					<SubItem>
+						<Name>nSndTime</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000046}">FILETIME</Type>
+						<Comment TxtId=""><![CDATA[SendTimestamp:
+Time at the client when the request departed for the server;]]></Comment>
+						<BitSize>64</BitSize>
+						<BitOffs>64</BitOffs>
+						<Unit><![CDATA[[100ns]]]></Unit>
+					</SubItem>
+					<SubItem>
+						<Name>nRecTime</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000046}">FILETIME</Type>
+						<Comment TxtId=""><![CDATA[Receive Timestamp:
+Time at the server when the request departed for the server;]]></Comment>
+						<BitSize>64</BitSize>
+						<BitOffs>128</BitOffs>
+						<Unit><![CDATA[[100ns]]]></Unit>
+					</SubItem>
+					<SubItem>
+						<Name>nTmtTime</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000046}">FILETIME</Type>
+						<Comment TxtId=""><![CDATA[Transmit Timestamp:
+Time at the server when the response left for the client;]]></Comment>
+						<BitSize>64</BitSize>
+						<BitOffs>192</BitOffs>
+						<Unit><![CDATA[[100ns]]]></Unit>
+					</SubItem>
+					<SubItem>
+						<Name>nDstTime</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000046}">FILETIME</Type>
+						<Comment TxtId=""><![CDATA[Destination Timestamp:
+Time at the client when the reply arrived from the server;]]></Comment>
+						<BitSize>64</BitSize>
+						<BitOffs>256</BitOffs>
+						<Unit><![CDATA[[100ns]]]></Unit>
+					</SubItem>
+					<SubItem>
+						<Name>tOffset</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
+						<Comment TxtId=""><![CDATA[Difference between local system time and external time;]]></Comment>
+						<BitSize>32</BitSize>
+						<BitOffs>320</BitOffs>
+						<Unit><![CDATA[[ms]]]></Unit>
+					</SubItem>
+					<SubItem>
+						<Name>tOffsetFtr</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
+						<Comment TxtId=""><![CDATA[Difference between local system time and external time filtered;]]></Comment>
+						<BitSize>32</BitSize>
+						<BitOffs>352</BitOffs>
+						<Unit><![CDATA[[ms]]]></Unit>
+					</SubItem>
+					<SubItem>
+						<Name>tDelay</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
+						<Comment TxtId=""><![CDATA[Delay between sending the request and receiving the response;]]></Comment>
+						<BitSize>32</BitSize>
+						<BitOffs>384</BitOffs>
+						<Unit><![CDATA[[ms]]]></Unit>
+					</SubItem>
+					<SubItem>
+						<Name>tDelayFtr</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
+						<Comment TxtId=""><![CDATA[Delay between sending the request and receiving the response filtered;]]></Comment>
+						<BitSize>32</BitSize>
+						<BitOffs>416</BitOffs>
+						<Unit><![CDATA[[ms]]]></Unit>
+					</SubItem>
+					<SubItem>
+						<Name>tError</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
+						<Comment TxtId=""><![CDATA[Difference between local offset and external offset;]]></Comment>
+						<BitSize>32</BitSize>
+						<BitOffs>448</BitOffs>
+						<Unit><![CDATA[[ms]]]></Unit>
+					</SubItem>
+					<SubItem>
+						<Name>tErrorFtr</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
+						<Comment TxtId=""><![CDATA[Difference between local offset and external offset filtered;]]></Comment>
+						<BitSize>32</BitSize>
+						<BitOffs>480</BitOffs>
+						<Unit><![CDATA[[ms]]]></Unit>
+					</SubItem>
+					<SubItem>
+						<Name>tDrift</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
+						<Comment TxtId=""><![CDATA[Difference between elapsed local system time and elapsed external time;]]></Comment>
+						<BitSize>32</BitSize>
+						<BitOffs>512</BitOffs>
+						<Unit><![CDATA[[ms/day]]]></Unit>
+					</SubItem>
+					<SubItem>
+						<Name>tDriftFtr</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
+						<Comment TxtId=""><![CDATA[Difference between elapsed local system time and elapsed external time filtered;]]></Comment>
+						<BitSize>32</BitSize>
+						<BitOffs>544</BitOffs>
+						<Unit><![CDATA[[ms/day]]]></Unit>
+					</SubItem>
+					<SubItem>
+						<Name>tDeviation</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
+						<Comment TxtId=""><![CDATA[Deviation between newest and latest offset;]]></Comment>
+						<BitSize>32</BitSize>
+						<BitOffs>576</BitOffs>
+						<Unit><![CDATA[[ms]]]></Unit>
+					</SubItem>
+					<SubItem>
+						<Name>tDeviationFtr</Name>
+						<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
+						<Comment TxtId=""><![CDATA[Deviation between newest and latest offset filtered;]]></Comment>
+						<BitSize>32</BitSize>
+						<BitOffs>608</BitOffs>
+						<Unit><![CDATA[[ms]]]></Unit>
+					</SubItem>
+					<PTCID>#x03150a11</PTCID>
+					<ContextId>1</ContextId>
+				</Parameter>
+			</Parameters>
+			<DataAreas>
+				<DataArea>
+					<AreaNo AreaType="OutputSrc" CreateSymbols="true">1</AreaNo>
+					<Name>Outputs</Name>
+					<ContextId>1</ContextId>
+					<ByteSize>32</ByteSize>
+					<Symbol>
+						<Name>nSysTime</Name>
+						<Comment TxtId=""><![CDATA[Local system time based 100ns ticks since 01.01.1601 (FILETIME);]]></Comment>
+						<BitSize>64</BitSize>
+						<BaseType GUID="{18071995-0000-0000-0000-00000000000C}">LINT</BaseType>
+						<Unit><![CDATA[[100ns]]]></Unit>
+						<BitOffs>0</BitOffs>
+					</Symbol>
+					<Symbol>
+						<Name>nExtTime</Name>
+						<Comment TxtId=""><![CDATA[External system time based 100ns ticks since 01.01.1601 (FILETIME);]]></Comment>
+						<BitSize>64</BitSize>
+						<BaseType GUID="{18071995-0000-0000-0000-00000000000C}">LINT</BaseType>
+						<Unit><![CDATA[[100ns]]]></Unit>
+						<BitOffs>64</BitOffs>
+					</Symbol>
+					<Symbol>
+						<Name>nSysToExtTimeOffset</Name>
+						<Comment TxtId=""><![CDATA[Difference between local system time and external time;]]></Comment>
+						<BitSize>64</BitSize>
+						<BaseType GUID="{18071995-0000-0000-0000-00000000000C}">LINT</BaseType>
+						<Unit><![CDATA[[100ns]]]></Unit>
+						<BitOffs>128</BitOffs>
+					</Symbol>
+					<Symbol>
+						<Name>nSysToExtTimeDeviation</Name>
+						<Comment TxtId=""><![CDATA[Deviation between internal corrected time and external time;]]></Comment>
+						<BitSize>64</BitSize>
+						<BaseType GUID="{18071995-0000-0000-0000-00000000000C}">LINT</BaseType>
+						<Unit><![CDATA[[100ns]]]></Unit>
+						<BitOffs>192</BitOffs>
+					</Symbol>
+				</DataArea>
+				<DataArea>
+					<AreaNo AreaType="OutputSrc" CreateSymbols="true">2</AreaNo>
+					<Name>Diagnostic</Name>
+					<ContextId>1</ContextId>
+					<ByteSize>16</ByteSize>
+					<Symbol>
+						<Name>bIsConnected</Name>
+						<Comment TxtId=""><![CDATA[NTP Client is connected to the server;]]></Comment>
+						<BitSize>8</BitSize>
+						<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+						<BitOffs>0</BitOffs>
+					</Symbol>
+					<Symbol>
+						<Name>bIsSynchronized</Name>
+						<Comment TxtId=""><![CDATA[NTP Client is approximately synchronized to the server;]]></Comment>
+						<BitSize>8</BitSize>
+						<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+						<BitOffs>8</BitOffs>
+					</Symbol>
+					<Symbol>
+						<Name>nLastUpdated</Name>
+						<Comment TxtId=""><![CDATA[Last tiime when received a new external time (FILETIME);]]></Comment>
+						<BitSize>64</BitSize>
+						<BaseType GUID="{18071995-0000-0000-0000-00000000000C}">LINT</BaseType>
+						<Unit><![CDATA[[100ns]]]></Unit>
+						<BitOffs>64</BitOffs>
+					</Symbol>
+				</DataArea>
+			</DataAreas>
+			<InterfacePointers>
+				<InterfacePointer>
+					<PTCID>#x03002060</PTCID>
+					<Name>CyclicCaller</Name>
+					<Type GUID="{0300001E-0000-0000-E000-000000000064}">ITcCyclicCaller</Type>
+					<ContextId>1</ContextId>
+				</InterfacePointer>
+			</InterfacePointers>
+			<ParameterValues>
+				<Value>
+					<Name>TraceLevelMax</Name>
+					<EnumText>tlWarning</EnumText>
+				</Value>
+				<Value>
+					<Name>TimeType</Name>
+					<EnumText>Medium</EnumText>
+				</Value>
+				<Value>
+					<Name>ClientEnable</Name>
+					<EnumText>TRUE</EnumText>
+				</Value>
+				<Value>
+					<Name>ServerName</Name>
+					<String>ntp.beckhoff-cloud.com</String>
+				</Value>
+				<Value>
+					<Name>ServerAddress</Name>
+					<Value>0</Value>
+				</Value>
+				<Value>
+					<Name>ServerPort</Name>
+					<Value>123</Value>
+				</Value>
+				<Value>
+					<Name>PollInterval</Name>
+					<Value>1000</Value>
+				</Value>
+				<Value>
+					<Name>ServerPara.bEnable</Name>
+					<EnumText>FALSE</EnumText>
+				</Value>
+				<Value>
+					<Name>ServerPara.nPort</Name>
+					<Value>0</Value>
+				</Value>
+				<Value>
+					<Name>ServerPara.nLeap</Name>
+					<Value>0</Value>
+				</Value>
+				<Value>
+					<Name>ServerPara.nStratum</Name>
+					<Value>1</Value>
+				</Value>
+				<Value>
+					<Name>ServerPara.nRoot</Name>
+					<Value>0</Value>
+				</Value>
+				<Value>
+					<Name>FilterPara.eMode</Name>
+					<EnumText>Linear</EnumText>
+				</Value>
+				<Value>
+					<Name>FilterPara.nFilter</Name>
+					<Value>60</Value>
+				</Value>
+				<Value>
+					<Name>FilterPara.nLimiter</Name>
+					<Value>10</Value>
+				</Value>
+				<Value>
+					<Name>FilterPara.nModulo</Name>
+					<Value>1000</Value>
+				</Value>
+			</ParameterValues>
+			<InterfacePointerValues>
+				<Value>
+					<Name>CyclicCaller</Name>
+					<OTCID>#x02010030</OTCID>
+				</Value>
+			</InterfacePointerValues>
+		</TmcDesc>
+	</Module>
+</TcSmItem>

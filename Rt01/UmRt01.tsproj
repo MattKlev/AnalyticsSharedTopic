@@ -10,6 +10,9 @@
 					<Name>PlcTask</Name>
 				</Task>
 			</Tasks>
+			<Modules>
+				<Module File="Object1 (TcNtpExternalTimeProvider).xti"/>
+			</Modules>
 			<TypeSystem>
 				<AdditionalTmcFile Name="SharedTypes" File="..\SharedTypes.tmc"/>
 			</TypeSystem>
@@ -51,7 +54,7 @@
 							<Psk_KeyCrypted/>
 							<PskMode>HexKey</PskMode>
 						</MqttConnectionSettings>
-						<TimeType>None</TimeType>
+						<TimeType>Medium</TimeType>
 					</StreamTargetItem>
 				</StreamTargets>
 				<ActivateAlyLogger>true</ActivateAlyLogger>

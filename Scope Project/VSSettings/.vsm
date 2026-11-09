@@ -60,6 +60,32 @@
                       <FileName></FileName>
                       <Children />
                     </Node>
+                    <Node>
+                      <Title>Dynamic Style</Title>
+                      <Expanded>True</Expanded>
+                      <FileName></FileName>
+                      <Children>
+                        <Node>
+                          <Title>Condition</Title>
+                          <Expanded>False</Expanded>
+                          <FileName></FileName>
+                          <Children />
+                        </Node>
+                      </Children>
+                    </Node>
+                    <Node>
+                      <Title>Dynamic Style (1)</Title>
+                      <Expanded>True</Expanded>
+                      <FileName></FileName>
+                      <Children>
+                        <Node>
+                          <Title>Condition (1)</Title>
+                          <Expanded>False</Expanded>
+                          <FileName></FileName>
+                          <Children />
+                        </Node>
+                      </Children>
+                    </Node>
                   </Children>
                 </Node>
                 <Node>
