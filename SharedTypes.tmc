@@ -2,7 +2,7 @@
 <TcModuleClass>
 	<DataTypes>
 		<DataType>
-			<Name GUID="{D3637C6B-2888-A37A-FB9B-1F10ECDF5EB1}" Namespace="GLOBAL" PlcGlobalType="true">ST_Mover</Name>
+			<Name GUID="{5697C91A-3243-4F2E-9273-66EC903977BE}" Namespace="GLOBAL" PlcGlobalType="true">ST_Mover</Name>
 			<BitSize>256</BitSize>
 			<SubItem>
 				<Name>BTN</Name>
@@ -23,11 +23,17 @@
 				<BitOffs>128</BitOffs>
 			</SubItem>
 			<SubItem>
-				<Name>CycleCount</Name>
+				<Name>ControllerID</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
 				<BitSize>32</BitSize>
 				<BitOffs>192</BitOffs>
 			</SubItem>
+			<Hides>
+				<Hide GUID="{D3637C6B-2888-A37A-FB9B-1F10ECDF5EB1}"/>
+				<Hide GUID="{EE82718F-5D23-4605-9A13-FA82F5B443CA}"/>
+				<Hide GUID="{F5C0898B-5294-4F4B-8382-23E7DA7EDCF4}"/>
+				<Hide GUID="{CF1DD6C9-FF1E-4F06-8DCE-FF3B3D6D1358}"/>
+			</Hides>
 		</DataType>
 	</DataTypes>
 </TcModuleClass>

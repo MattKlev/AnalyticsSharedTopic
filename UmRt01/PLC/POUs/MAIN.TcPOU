@@ -4,19 +4,50 @@
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
 	Mover  : ST_Mover;
-	Active : BOOL;
+	Active : BOOL;					// "Mover Active" - set TRUE via ADS, the PLC resets it when the arc is finished
+END_VAR
+VAR
+	ActiveLast : BOOL;
+	Angle      : LREAL;				// current angle [rad]
+	AngleStep  : LREAL;				// angle increment per PLC cycle [rad]
+END_VAR
+VAR CONSTANT
+	cPi         : LREAL := 3.14159265358979;
+	cBtn        : UDINT := 1234;	// BTN the Analytics Logger condition is waiting for
+	cCenterX    : LREAL := 0.0;
+	cCenterY    : LREAL := 0.0;
+	cRadius     : LREAL := 10.0;
+	cStartAngle : LREAL := 0.0;		// UmRt01 draws the first half: 0..180 deg
+	cEndAngle   : LREAL := cPi;
+	cArcTime    : LREAL := 5.0;		// time to draw the half circle [s]
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF Active THEN
-	Mover.BTN := 1234;
-	//Make the first half of the square
-	Mover.SetXPos:=5;
-	Mover.SetYPos:=5;
+      <ST><![CDATA[Mover.ControllerID:=1; ///Who is controlling the mover - diagnostics on the scope, using dynamic sytle.
+
+IF Active THEN
+	IF NOT ActiveLast THEN
+		// Rising edge: start the arc. Task cycle time is in 100 ns units.
+		Angle	  := cStartAngle;
+		AngleStep := (cEndAngle - cStartAngle) * UDINT_TO_LREAL(_TaskInfo[GETCURTASKINDEXEX()].CycleTime) * 1.0E-7 / cArcTime;
+	END_IF
+
+	Mover.BTN	  := cBtn;
+	Mover.SetXPos := cCenterX + cRadius * COS(Angle);
+	Mover.SetYPos := cCenterY + cRadius * SIN(Angle);
+
+	IF Angle >= cEndAngle THEN
+		// Finished. BTN stays 1234 for this cycle so the end point is still logged.
+		Active := FALSE;
+	ELSE
+		Angle := MIN(Angle + AngleStep, cEndAngle);
+	END_IF
 ELSE
 	Mover.BTN	  := 0;
 	Mover.SetXPos := 0;
 	Mover.SetYPos := 0;
-END_IF]]></ST>
+END_IF
+
+ActiveLast := Active;]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

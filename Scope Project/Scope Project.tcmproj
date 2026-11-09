@@ -7,7 +7,7 @@
     <RootNamespace>XY Scope Project</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="YT.tcscopex">
+    <Content Include="Charts.tcscopex">
       <SubType>Content</SubType>
     </Content>
   </ItemGroup>

@@ -4,15 +4,21 @@
   <FileName></FileName>
   <Children>
     <Node>
-      <Title>YT</Title>
-      <Expanded>False</Expanded>
-      <FileName>C:\Source\AnalyticsSharedTopic\Scope Project\YT.tcscopex</FileName>
+      <Title>Charts</Title>
+      <Expanded>True</Expanded>
+      <FileName>C:\Source\AnalyticsSharedTopic\Scope Project\Charts.tcscopex</FileName>
       <Children>
         <Node>
           <Title>DataPool</Title>
-          <Expanded>False</Expanded>
+          <Expanded>True</Expanded>
           <FileName></FileName>
           <Children>
+            <Node>
+              <Title>ControllerID</Title>
+              <Expanded>False</Expanded>
+              <FileName></FileName>
+              <Children />
+            </Node>
             <Node>
               <Title>SetXPos</Title>
               <Expanded>False</Expanded>
@@ -28,13 +34,52 @@
           </Children>
         </Node>
         <Node>
-          <Title>YT Chart</Title>
-          <Expanded>False</Expanded>
+          <Title>XY Chart</Title>
+          <Expanded>True</Expanded>
           <FileName></FileName>
           <Children>
             <Node>
               <Title>Axis Group</Title>
-              <Expanded>False</Expanded>
+              <Expanded>True</Expanded>
+              <FileName></FileName>
+              <Children>
+                <Node>
+                  <Title>SetXPos, SetYPos</Title>
+                  <Expanded>True</Expanded>
+                  <FileName></FileName>
+                  <Children>
+                    <Node>
+                      <Title>X: SetXPos</Title>
+                      <Expanded>False</Expanded>
+                      <FileName></FileName>
+                      <Children />
+                    </Node>
+                    <Node>
+                      <Title>Y: SetYPos</Title>
+                      <Expanded>False</Expanded>
+                      <FileName></FileName>
+                      <Children />
+                    </Node>
+                  </Children>
+                </Node>
+                <Node>
+                  <Title>Round Shape</Title>
+                  <Expanded>False</Expanded>
+                  <FileName></FileName>
+                  <Children />
+                </Node>
+              </Children>
+            </Node>
+          </Children>
+        </Node>
+        <Node>
+          <Title>YT Chart</Title>
+          <Expanded>True</Expanded>
+          <FileName></FileName>
+          <Children>
+            <Node>
+              <Title>Axis Group (1)</Title>
+              <Expanded>True</Expanded>
               <FileName></FileName>
               <Children>
                 <Node>
@@ -45,6 +90,12 @@
                 </Node>
                 <Node>
                   <Title>SetYPos</Title>
+                  <Expanded>False</Expanded>
+                  <FileName></FileName>
+                  <Children />
+                </Node>
+                <Node>
+                  <Title>ControllerID</Title>
                   <Expanded>False</Expanded>
                   <FileName></FileName>
                   <Children />
