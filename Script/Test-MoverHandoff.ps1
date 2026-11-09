@@ -1,7 +1,7 @@
 #Requires -Modules TcXaeMgmt
 <#
 .SYNOPSIS
-    Simulates a mover travelling from UmRt01 to UmRt02 so both Analytics Loggers
+    Simulates a mover travelling from Rt01 to Rt02 so both Analytics Loggers
     publish to the same MQTT topic, one after the other.
 
 .DESCRIPTION
@@ -12,7 +12,7 @@
       3. The PLC resets MAIN.Active when the arc is finished; the script waits for
          that, then moves on to the next target.
 
-    UmRt01 draws 0..180 deg, UmRt02 draws 180..360 deg, so one lap is a full circle.
+    Rt01 draws 0..180 deg, Rt02 draws 180..360 deg, so one lap is a full circle.
 
 .EXAMPLE
     .\Test-MoverHandoff.ps1
@@ -26,7 +26,7 @@
 [CmdletBinding()]
 param(
     # Targets in the order the mover visits them.
-    # UmRt01 = 192.168.1.27.1.1, UmRt02 = 192.168.1.25.1.1
+    # Rt01 = 192.168.1.27.1.1, Rt02 = 192.168.1.25.1.1
     [string[]]$NetIds = @('192.168.1.27.1.1', '192.168.1.25.1.1'),
 
     [int]$Port = 851,

@@ -10,7 +10,7 @@
       <Children>
         <Node>
           <Title>DataPool</Title>
-          <Expanded>True</Expanded>
+          <Expanded>False</Expanded>
           <FileName></FileName>
           <Children>
             <Node>
@@ -35,12 +35,12 @@
         </Node>
         <Node>
           <Title>XY Chart</Title>
-          <Expanded>True</Expanded>
+          <Expanded>False</Expanded>
           <FileName></FileName>
           <Children>
             <Node>
               <Title>Axis Group</Title>
-              <Expanded>True</Expanded>
+              <Expanded>False</Expanded>
               <FileName></FileName>
               <Children>
                 <Node>
@@ -61,7 +61,7 @@
                       <Children />
                     </Node>
                     <Node>
-                      <Title>Dynamic Style</Title>
+                      <Title>Dynamic Style - Controller 1</Title>
                       <Expanded>True</Expanded>
                       <FileName></FileName>
                       <Children>
@@ -74,7 +74,7 @@
                       </Children>
                     </Node>
                     <Node>
-                      <Title>Dynamic Style (1)</Title>
+                      <Title>Dynamic Style - Controller 2</Title>
                       <Expanded>True</Expanded>
                       <FileName></FileName>
                       <Children>

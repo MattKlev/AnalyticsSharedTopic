@@ -17,7 +17,7 @@ VAR CONSTANT
 	cCenterX    : LREAL := 0.0;
 	cCenterY    : LREAL := 0.0;
 	cRadius     : LREAL := 10.0;
-	cStartAngle : LREAL := cPi;		// UmRt02 draws the second half: 180..360 deg
+	cStartAngle : LREAL := cPi;		// Rt02 draws the second half: 180..360 deg
 	cEndAngle   : LREAL := 2.0 * cPi;
 	cArcTime    : LREAL := 5.0;		// time to draw the half circle [s]
 END_VAR
@@ -43,9 +43,9 @@ IF Active THEN
 		Angle := MIN(Angle + AngleStep, cEndAngle);
 	END_IF
 ELSE
-	Mover.BTN	  := 0;
-	Mover.SetXPos := 0;
-	Mover.SetYPos := 0;
+	// Inactive: only BTN drops (stops the logger). Hold the last position so the
+	// one sample published after the condition clears does not spike to 0/0.
+	Mover.BTN := 0;
 END_IF
 
 ActiveLast := Active;]]></ST>
