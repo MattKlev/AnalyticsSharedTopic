@@ -1,0 +1,503 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass">
+  <Vendor>
+    <Name>Beckhoff Automation GmbH</Name>
+  </Vendor>
+  <DataTypes>
+    <DataType>
+      <Name GUID="{F0F5BE0A-A976-4E5B-82C9-01DDE84D967B}" TcBaseType="true">IOT_FORMAT</Name>
+      <BitSize>32</BitSize>
+      <BaseType GUID="{18071995-0000-0000-0000-000000000008}">UDINT</BaseType>
+      <EnumInfo>
+        <Text>IOT_FORMAT_NONE</Text>
+        <Enum>0</Enum>
+      </EnumInfo>
+      <EnumInfo>
+        <Text>IOT_FORMAT_FILE</Text>
+        <Enum>1</Enum>
+      </EnumInfo>
+      <EnumInfo>
+        <Text>IOT_FORMAT_JSON</Text>
+        <Enum>2</Enum>
+      </EnumInfo>
+      <EnumInfo>
+        <Text>IOT_FORMAT_BINARY</Text>
+        <Enum>3</Enum>
+      </EnumInfo>
+    </DataType>
+    <DataType>
+      <Name GUID="{965D5AD3-64D0-4FE6-9FDA-75A8894F7EA0}" TcBaseType="true">ANALYTICS_FORMAT</Name>
+      <BitSize>32</BitSize>
+      <BaseType GUID="{18071995-0000-0000-0000-000000000008}">UDINT</BaseType>
+      <EnumInfo>
+        <Text>ANALYTICS_FORMAT_FILE</Text>
+        <Enum>1</Enum>
+      </EnumInfo>
+      <EnumInfo>
+        <Text>ANALYTICS_FORMAT_MQTT_BINARY</Text>
+        <Enum>3</Enum>
+      </EnumInfo>
+    </DataType>
+    <DataType>
+      <Name GUID="{DA0A5295-6990-4370-B4BC-D42610BFA90D}" TcBaseType="true">ANALYTICS_COMPRESSION</Name>
+      <BitSize>32</BitSize>
+      <BaseType GUID="{18071995-0000-0000-0000-000000000008}">UDINT</BaseType>
+      <EnumInfo>
+        <Text>ANALYTICS_COMPRESSION_NONE</Text>
+        <Enum>0</Enum>
+      </EnumInfo>
+      <EnumInfo>
+        <Text>ANALYTICS_COMPRESSION_RL</Text>
+        <Enum>1</Enum>
+      </EnumInfo>
+    </DataType>
+    <DataType>
+      <Name GUID="{C5AB591C-9F1C-4116-B841-AA47007078B1}" TcBaseType="true">ANALYTICS_COMPRESSION_WIDTH</Name>
+      <BitSize>32</BitSize>
+      <BaseType GUID="{18071995-0000-0000-0000-000000000008}">UDINT</BaseType>
+      <EnumInfo>
+        <Text>ANALYTICS_COMP_WIDTH_1</Text>
+        <Enum>1</Enum>
+      </EnumInfo>
+      <EnumInfo>
+        <Text>ANALYTICS_COMP_WIDTH_2</Text>
+        <Enum>2</Enum>
+      </EnumInfo>
+      <EnumInfo>
+        <Text>ANALYTICS_COMP_WIDTH_4</Text>
+        <Enum>4</Enum>
+      </EnumInfo>
+      <EnumInfo>
+        <Text>ANALYTICS_COMP_WIDTH_8</Text>
+        <Enum>8</Enum>
+      </EnumInfo>
+      <EnumInfo>
+        <Text>ANALYTICS_COMP_WIDTH_16</Text>
+        <Enum>16</Enum>
+      </EnumInfo>
+      <EnumInfo>
+        <Text>ANALYTICS_COMP_WIDTH_32</Text>
+        <Enum>32</Enum>
+      </EnumInfo>
+      <EnumInfo>
+        <Text>ANALYTICS_COMP_WIDTH_64</Text>
+        <Enum>64</Enum>
+      </EnumInfo>
+    </DataType>
+    <DataType>
+      <Name GUID="{85B48928-CE1B-41DA-A358-2114790D18A8}" GlobalType="true" PersistentType="true">ITcAnalyticsStream</Name>
+      <BaseType GUID="{00000001-0000-0000-e000-000000000064}">ITcUnknown</BaseType>
+      <Method>
+        <Name>StartAnalyticsStream</Name>
+      </Method>
+      <Method>
+        <Name>StopAnalyticsStream</Name>
+      </Method>
+    </DataType>
+    <DataType>
+      <Name GUID="{721786D8-68E7-42F4-BCA2-5104A32F6598}" GlobalType="true" PersistentType="true">ITcAnalyticsStreamHelper</Name>
+      <BaseType GUID="{00000001-0000-0000-e000-000000000064}">ITcUnknown</BaseType>
+      <Method>
+        <Name>SymBufferSpaceByHandle</Name>
+        <ReturnType GUID="{18071995-0000-0000-0000-000000000019}">HRESULT</ReturnType>
+        <ReturnBitSize>32</ReturnBitSize>
+        <Parameter>
+          <Name>handle</Name>
+          <Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+          <BitSize X64="64">32</BitSize>
+          <Default>0</Default>
+        </Parameter>
+        <Parameter>
+          <Name>bufferSpaceLeft</Name>
+          <Type GUID="{18071995-0000-0000-0000-000000000008}" PointerTo="1">UDINT</Type>
+          <BitSize X64="64">32</BitSize>
+          <Default>0</Default>
+        </Parameter>
+      </Method>
+      <Method>
+        <Name>SymDroppedSamplesByHandle</Name>
+        <ReturnType GUID="{18071995-0000-0000-0000-000000000019}">HRESULT</ReturnType>
+        <ReturnBitSize>32</ReturnBitSize>
+        <Parameter>
+          <Name>nHandle</Name>
+          <Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+          <BitSize X64="64">32</BitSize>
+          <Default>0</Default>
+        </Parameter>
+        <Parameter>
+          <Name>pSamplesDropped</Name>
+          <Type GUID="{18071995-0000-0000-0000-000000000008}" PointerTo="1">UDINT</Type>
+          <BitSize X64="64">32</BitSize>
+          <Default>0</Default>
+        </Parameter>
+      </Method>
+      <Method>
+        <Name>ResetSymDroppedSamplesByHandle</Name>
+        <ReturnType GUID="{18071995-0000-0000-0000-000000000019}">HRESULT</ReturnType>
+        <ReturnBitSize>32</ReturnBitSize>
+        <Parameter>
+          <Name>nHandle</Name>
+          <Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+          <BitSize X64="64">32</BitSize>
+          <Default>0</Default>
+        </Parameter>
+      </Method>
+    </DataType>
+  </DataTypes>
+  <Groups>
+    <Group>
+      <Name>Analytics</Name>
+      <ImageData16x14>424DE6000000000000007600000028000000100000000E00000001000400000000000000000000000000000000000000000000000000FF00FF00BCBCBC008D8D8D000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001222222222210001222222222222101222222222222221222222222222222222222222222222221222222222222221022222222222222000222222222222000012210222222100000110001222100000000000011100000000000000000000</ImageData16x14>
+    </Group>
+  </Groups>
+  <Modules>
+    <Module GUID="{af60ac1d-5cde-4423-b485-94bb0587928b}" Group="Analytics">
+      <Name>DataLogger</Name>
+      <CLSID ClassFactory="TcAnalytics">{af60ac1d-5cde-4423-b485-94bb0587928b}</CLSID>
+      <Licenses>
+        <License>
+          <LicenseId>{02AC2825-C3C7-4D15-AAF6-4EB45EFAA2D0}</LicenseId>
+          <Comment>TC3 Analytics Logger</Comment>
+        </License>
+      </Licenses>
+      <InitSequence>SO</InitSequence>
+      <Contexts>
+        <Context>
+          <Id>1</Id>
+        </Context>
+      </Contexts>
+      <Interfaces>
+        <Interface DisableCodeGeneration="true">
+          <Type GUID="{00000012-0000-0000-E000-000000000064}">ITComObject</Type>
+        </Interface>
+        <Interface>
+          <Type GUID="{03000010-0000-0000-E000-000000000064}">ITcCyclic</Type>
+        </Interface>
+        <Interface DisableCodeGeneration="true">
+          <Type GUID="{03000012-0000-0000-E000-000000000064}">ITcADI</Type>
+        </Interface>
+        <Interface DisableCodeGeneration="true">
+          <Type GUID="{03000018-0000-0000-E000-000000000064}">ITcWatchSource</Type>
+        </Interface>
+        <Interface DisableCodeGeneration="true">
+          <Type GUID="{85B48928-CE1B-41DA-A358-2114790D18A8}">ITcAnalyticsStream</Type>
+        </Interface>
+      </Interfaces>
+      <Parameters>
+        <Parameter>
+          <Name>MqttClient</Name>
+          <BaseType GUID="{18071995-0000-0000-0000-00000000000F}">OTCID</BaseType>
+          <PTCID>#x02020007</PTCID>
+          <ContextId>1</ContextId>
+        </Parameter>
+        <Parameter>
+          <Name>MqttTopic</Name>
+          <BaseType GUID="{18071995-0000-0000-0000-000100000050}">STRING</BaseType>
+          <PTCID>#x02020008</PTCID>
+          <ContextId>1</ContextId>
+        </Parameter>
+      </Parameters>
+      <DataAreas>
+        <DataArea>
+          <AreaNo AreaType="InputDst">0</AreaNo>
+          <Name>Inputs</Name>
+          <ContextId>1</ContextId>
+          <Symbol>
+            <Name>Value</Name>
+            <BaseType GUID="{18071995-0000-0000-0000-000000000008}">UDINT</BaseType>
+          </Symbol>
+          <Symbol>
+            <Name>Status</Name>
+            <BaseType GUID="{18071995-0000-0000-0000-000000000008}">UDINT</BaseType>
+          </Symbol>
+          <Symbol>
+            <Name>Data</Name>
+            <BaseType GUID="{18071995-0000-0000-0000-000000000008}">UDINT</BaseType>
+          </Symbol>
+        </DataArea>
+        <DataArea>
+          <AreaNo AreaType="OutputSrc">1</AreaNo>
+          <Name>Outputs</Name>
+          <ContextId>1</ContextId>
+          <Symbol>
+            <Name>Value</Name>
+            <BaseType GUID="{18071995-0000-0000-0000-000000000008}">UDINT</BaseType>
+          </Symbol>
+          <Symbol>
+            <Name>Control</Name>
+            <BaseType GUID="{18071995-0000-0000-0000-000000000008}">UDINT</BaseType>
+          </Symbol>
+          <Symbol>
+            <Name>Data</Name>
+            <BaseType GUID="{18071995-0000-0000-0000-000000000008}">UDINT</BaseType>
+          </Symbol>
+        </DataArea>
+      </DataAreas>
+      <InterfacePointers>
+        <InterfacePointer>
+          <PTCID>#x03002060</PTCID>
+          <Name>CyclicCaller</Name>
+          <Type GUID="{0300001e-0000-0000-e000-000000000064}">ITcCyclicCaller</Type>
+        </InterfacePointer>
+      </InterfacePointers>
+    </Module>
+    <Module GUID="{66B6E2FE-1F4E-46BB-91BE-0C4173FFB44E}" Group="Analytics">
+      <Name>StreamHelper</Name>
+      <CLSID ClassFactory="TcAnalytics">{66B6E2FE-1F4E-46BB-91BE-0C4173FFB44E}</CLSID>
+      <Licenses>
+        <License>
+          <LicenseId>{CCA47D7F-3A22-4852-81CD-15A045A6B646}</LicenseId>
+          <Comment>TC3 Analytics Runtime Base</Comment>
+        </License>
+        <License>
+          <LicenseId>{0ABFD2B0-EAE1-4DC7-AABE-03093B0786B7}</LicenseId>
+          <Comment>TC3 IoT Comunication (MQTT)</Comment>
+        </License>
+      </Licenses>
+      <InitSequence>SO</InitSequence>
+      <Contexts>
+        <Context>
+          <Id>1</Id>
+        </Context>
+      </Contexts>
+      <Interfaces>
+        <Interface DisableCodeGeneration="true">
+          <Type GUID="{00000012-0000-0000-E000-000000000064}">ITComObject</Type>
+        </Interface>
+        <Interface DisableCodeGeneration="true">
+          <Type GUID="{9A71A723-3928-4C02-AC02-EFD30999A041}">ITcIotMqttOwner</Type>
+        </Interface>
+        <Interface DisableCodeGeneration="true">
+          <Type GUID="{493BC32D-8F33-4336-B722-BCBCA9618723}">ITcIotSymbolAccess</Type>
+        </Interface>
+      </Interfaces>
+      <Parameters>
+        <Group>General</Group>
+        <Group>MQTT</Group>
+        <Group>Tls</Group>
+        <Group>Filemode</Group>
+        <Parameter Group="General">
+          <Name>Operational Mode</Name>
+          <BaseType GUID="{965D5AD3-64D0-4FE6-9FDA-75A8894F7EA0}">ANALYTICS_FORMAT</BaseType>
+          <Default>
+            <Value>3</Value>
+          </Default>
+          <PTCID>#x0203803B</PTCID>
+          <ContextId>1</ContextId>
+        </Parameter>
+        <Parameter Group="MQTT">
+          <Name>Autostart Receiving</Name>
+          <BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+          <Default>
+            <Value>1</Value>
+          </Default>
+          <PTCID>#x02030036</PTCID>
+          <ContextId>1</ContextId>
+        </Parameter>
+        <Parameter Group="MQTT">
+          <Name>Host Name</Name>
+          <BaseType GUID="{18071995-0000-0000-0000-000100000050}">STRING</BaseType>
+          <Default>
+            <String>127.0.0.1</String>
+          </Default>
+          <PTCID>#x02020113</PTCID>
+          <ContextId>1</ContextId>
+        </Parameter>
+        <Parameter Group="MQTT">
+          <Name>TcpPort</Name>
+          <BaseType GUID="{18071995-0000-0000-0000-000000000005}">UINT</BaseType>
+          <Default>
+            <Value>1883</Value>
+          </Default>
+          <PTCID>#x02020103</PTCID>
+          <ContextId>1</ContextId>
+        </Parameter>
+        <Parameter Group="MQTT">
+          <Name>Topic Prefix</Name>
+          <BaseType GUID="{18071995-0000-0000-0000-0001000000FF}">STRING(255)</BaseType>
+          <PTCID>#x02030008</PTCID>
+          <ContextId>1</ContextId>
+        </Parameter>
+        <Parameter Group="MQTT">
+          <Name>Client ID</Name>
+          <BaseType GUID="{18071995-0000-0000-0000-000100000050}">STRING</BaseType>
+          <PTCID>#x02020101</PTCID>
+          <ContextId>1</ContextId>
+        </Parameter>
+        <Parameter Group="MQTT">
+          <Name>Username</Name>
+          <BaseType GUID="{18071995-0000-0000-0000-000100000050}">STRING</BaseType>
+          <PTCID>#x02020106</PTCID>
+          <ContextId>1</ContextId>
+        </Parameter>
+        <Parameter Group="MQTT">
+          <Name>Password</Name>
+          <BaseType GUID="{18071995-0000-0000-0000-000100000050}">STRING</BaseType>
+          <PTCID>#x02020107</PTCID>
+          <ContextId>1</ContextId>
+        </Parameter>
+        <Parameter Group="MQTT">
+          <Name>Max Handles</Name>
+          <BaseType GUID="{18071995-0000-0000-0000-000000000008}">UDINT</BaseType>
+          <Default>
+            <Value>100</Value>
+          </Default>
+          <PTCID>#x02030020</PTCID>
+          <ContextId>1</ContextId>
+        </Parameter>
+        <Parameter Group="MQTT">
+          <Name>Fifo Exponent</Name>
+          <BaseType GUID="{18071995-0000-0000-0000-000000000008}">UDINT</BaseType>
+          <Default>
+            <Value>6</Value>
+          </Default>
+          <PTCID>#x02030021</PTCID>
+          <ContextId>1</ContextId>
+        </Parameter>
+        <Parameter Group="MQTT">
+          <Name>Max Message Size</Name>
+          <BaseType GUID="{18071995-0000-0000-0000-000000000008}">UDINT</BaseType>
+          <Default>
+            <Value>#x40000</Value>
+          </Default>
+          <PTCID>#x02020147</PTCID>
+          <ContextId>1</ContextId>
+        </Parameter>
+        <Parameter Group="Tls">
+          <Name>CaFile</Name>
+          <BaseType GUID="{18071995-0000-0000-0000-0001000000FF}">STRING(255)</BaseType>
+          <PTCID>#x02020116</PTCID>
+          <ContextId>1</ContextId>
+        </Parameter>
+        <Parameter Group="Tls">
+          <Name>CertFile</Name>
+          <BaseType GUID="{18071995-0000-0000-0000-0001000000FF}">STRING(255)</BaseType>
+          <PTCID>#x02020118</PTCID>
+          <ContextId>1</ContextId>
+        </Parameter>
+        <Parameter Group="Tls">
+          <Name>KeyFile</Name>
+          <BaseType GUID="{18071995-0000-0000-0000-0001000000FF}">STRING(255)</BaseType>
+          <PTCID>#x02020119</PTCID>
+          <ContextId>1</ContextId>
+        </Parameter>
+        <Parameter Group="Tls">
+          <Name>KeyPw</Name>
+          <BaseType GUID="{18071995-0000-0000-0000-0001000000FF}">STRING(255)</BaseType>
+          <PTCID>#x02020124</PTCID>
+          <ContextId>1</ContextId>
+        </Parameter>
+        <Parameter Group="Tls">
+          <Name>CrlFile</Name>
+          <BaseType GUID="{18071995-0000-0000-0000-0001000000FF}">STRING(255)</BaseType>
+          <PTCID>#x02020125</PTCID>
+          <ContextId>1</ContextId>
+        </Parameter>
+        <Parameter Group="Tls">
+          <Name>PskId</Name>
+          <BaseType GUID="{18071995-0000-0000-0000-0001000000FF}">STRING(255)</BaseType>
+          <PTCID>#x02020127</PTCID>
+          <ContextId>1</ContextId>
+        </Parameter>
+        <Parameter Group="Tls">
+          <Name>PskPwd</Name>
+          <BaseType GUID="{18071995-0000-0000-0000-0001000000FF}">STRING(255)</BaseType>
+          <PTCID>#x02020129</PTCID>
+          <ContextId>1</ContextId>
+        </Parameter>
+        <Parameter Group="Tls">
+          <Name>Insecure</Name>
+          <BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+          <PTCID>#x0202011A</PTCID>
+          <ContextId>1</ContextId>
+        </Parameter>
+        <Parameter Group="Tls">
+          <Name>IgnoreExpiration</Name>
+          <BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+          <PTCID>#x0202012B</PTCID>
+          <ContextId>1</ContextId>
+        </Parameter>
+        <Parameter Group="Tls">
+          <Name>IgnoreCommonNameMismatch</Name>
+          <BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+          <PTCID>#x0202012E</PTCID>
+          <ContextId>1</ContextId>
+        </Parameter>
+        <Parameter Group="Tls">
+          <Name>CaseSensitivePskId</Name>
+          <BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+          <PTCID>#x0202012A</PTCID>
+          <ContextId>1</ContextId>
+        </Parameter>
+        <Parameter Group="Tls">
+          <Name>Version</Name>
+          <BaseType GUID="{18071995-0000-0000-0000-0001000000FF}">STRING(255)</BaseType>
+          <PTCID>#x0202011B</PTCID>
+          <ContextId>1</ContextId>
+        </Parameter>
+        <Parameter OnlineParameter="true">
+          <Name>Is Connected</Name>
+          <BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+          <Default>
+            <Value>0</Value>
+          </Default>
+          <PTCID>#x02020112</PTCID>
+          <ContextId>1</ContextId>
+        </Parameter>
+        <Parameter Group="Filemode">
+          <Name>Aly File Directory</Name>
+          <BaseType GUID="{18071995-0000-0000-0000-0001000000FF}">STRING(255)</BaseType>
+          <PTCID>#x02038040</PTCID>
+          <Default>
+            <String>e.g. C:\TwinCAT\3.1\Boot\Analytics\8B650132-8E38-8295-D3D2-485D8BB304A2\</String>
+          </Default>
+          <ContextId>1</ContextId>
+        </Parameter>
+        <Parameter Group="Filemode">
+          <Name>Read Buffer Size [samples]</Name>
+          <BaseType GUID="{18071995-0000-0000-0000-000000000005}">UINT</BaseType>
+          <PTCID>#x0203803C</PTCID>
+          <Default>
+            <Value>32</Value>
+          </Default>
+          <ContextId>1</ContextId>
+        </Parameter>
+        <Parameter Group="Filemode">
+          <Name>Stream Buffer Size [read-buffers]</Name>
+          <BaseType GUID="{18071995-0000-0000-0000-000000000005}">UINT</BaseType>
+          <PTCID>#x0203803D</PTCID>
+          <Default>
+            <Value>32</Value>
+          </Default>
+          <ContextId>1</ContextId>
+        </Parameter>
+        <Parameter Group="Filemode">
+          <Name>Read Files Cyclically</Name>
+          <BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+          <Default>
+            <Value>1</Value>
+          </Default>
+          <PTCID>#x02030043</PTCID>
+          <ContextId>1</ContextId>
+        </Parameter>
+      </Parameters>
+      <Deployment>
+        <DependsOn>
+          <CLSID ClassFactory="TcIotDrivers">{978857F8-4A76-4AC4-A0C3-F303E3E39C57}</CLSID>
+        </DependsOn>
+      </Deployment>
+      <Properties>
+        <Property>
+          <Name>Category</Name>
+          <Value>Analytics Object</Value>
+        </Property>
+      </Properties>
+    </Module>
+  </Modules>
+  <Library>
+    <Name>TcAnalytics</Name>
+    <Version>3.4.89.0</Version>
+    <Deployment>
+    </Deployment>
+  </Library>
+</TcModuleClass>

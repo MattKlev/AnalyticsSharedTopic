@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="MAIN" Id="{86f2f4f3-887d-4133-be4a-6e34a719ffcf}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	Mover  : ST_Mover;
+	Active : BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF Active THEN
+	Mover.BTN := 1234;
+	//Make the second half of the square
+	Mover.SetXPos:=10;
+	Mover.SetYPos:=10;
+ELSE
+	Mover.BTN	  := 0;
+	Mover.SetXPos := 0;
+	Mover.SetYPos := 0;
+END_IF]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
